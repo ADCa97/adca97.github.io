@@ -1,7 +1,7 @@
 ---
 title: Test
 top: false
-cover: false
+cover: true
 toc: true
 mathjax: true
 date: 2021-11-10 13:26:21
