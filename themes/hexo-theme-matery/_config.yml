@@ -543,7 +543,7 @@ tidio:
 tuxiaochao:
   enable: false
   productId:
-#背景canvas-nest
+# 背景canvas-nest
 canvas_nest:
   enable: false
   color: 0,0,255 # 线条颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
@@ -600,7 +600,7 @@ instantpage:
 # banner 是否每日切换.
 # 若为 false, 则 banner 默认为 /medias/banner/0.jpg
 banner:
-  enable: true
+  enable: false
 
 #ICP备案信息尾部显示
 icp:
