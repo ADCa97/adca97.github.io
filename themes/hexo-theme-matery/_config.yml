@@ -16,9 +16,9 @@ menu:
   About:
     url: /about
     icon: fas fa-user-circle
-  Contact:
-    url: /contact
-    icon: fas fa-comments
+  #Contact:
+  #  url: /contact
+  #  icon: fas fa-comments
   #Friends:
   #  url: /friends
   #  icon: fas fa-address-book
@@ -562,7 +562,7 @@ ribbon:
 
 # 背景动态彩带.
 ribbon_dynamic:
-  enable: true
+  enable: false
 
 # sharejs文章分享模块.
 # 支持顺序，可选项目为twitter, facebook, google, qq, qzone, wechat, weibo, douban, linkedin.
