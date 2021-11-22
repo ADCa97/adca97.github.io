@@ -9,6 +9,7 @@ password:
 summary:
 tags:
 categories:
+    - Img
 img: https://cdn.jsdelivr.net/gh/ADCa97/images/img/rem.png
 ---
 

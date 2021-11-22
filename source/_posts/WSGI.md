@@ -10,6 +10,7 @@ summary:
 tags:
     - Web
 categories:
+    - Web
 ---
 ## 为什么需要WSGI？
 ---
