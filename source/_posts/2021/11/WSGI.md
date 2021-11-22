@@ -35,7 +35,7 @@ WSGI全称Python Web Server Gateway Interface，指定了Web服务器和Python W
 ## 实战
 ---
 接下来，我们编写`hello.py`，一个符合WSGI标准的HTTP处理函数：
-```
+```python
 # hello.py
 def application(environ, start_response):
     status = "200 OK"
@@ -45,7 +45,7 @@ def application(environ, start_response):
     return [b"<h1> Hello %s </h1>" % path.encode()]
 ```
 然后，再编写一个`server.py`，负责启动WSGI服务器，加载`application()`函数：
-```
+```python
 # server.py
 from wsgiref.simple_server import make_server
 from hello import application
