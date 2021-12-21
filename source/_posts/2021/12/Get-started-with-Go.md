@@ -18,6 +18,24 @@ img:
 ## Get started with Go
 <https://golang.google.cn/doc/tutorial/getting-started>
 
+**Write some code**
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+
+**Call code in an external package**
+
+注意设置代理
+```bash
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+
 ## Create a Go module
 <https://golang.google.cn/doc/tutorial/create-module>
 
