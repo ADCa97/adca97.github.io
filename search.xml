@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>Raspberry</title>
-      <link href="/2021/12/20/raspberry/"/>
-      <url>/2021/12/20/raspberry/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>LearnGo</title>
       <link href="/2021/12/06/get-started-with-go/"/>
       <url>/2021/12/06/get-started-with-go/</url>
@@ -55,6 +42,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Web </tag>
+            
+        </tags>
       
     </entry>
     
