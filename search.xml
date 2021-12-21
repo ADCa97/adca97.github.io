@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Raspberry</title>
+      <link href="/2021/12/20/raspberry/"/>
+      <url>/2021/12/20/raspberry/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LearnGo</title>
+      <link href="/2021/12/06/get-started-with-go/"/>
+      <url>/2021/12/06/get-started-with-go/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h2><p><a href="https://golang.google.cn/doc/install">https://golang.google.cn/doc/install</a></p><h2 id="Get-started-with-Go"><a href="#Get-started-with-Go" class="headerlink" title="Get started with Go"></a>Get started with Go</h2><p><a href="https://golang.google.cn/doc/tutorial/getting-started">https://golang.google.cn/doc/tutorial/getting-started</a></p><h2 id="Create-a-Go-module"><a href="#Create-a-Go-module" class="headerlink" title="Create a Go module"></a>Create a Go module</h2><p><a href="https://golang.google.cn/doc/tutorial/create-module">https://golang.google.cn/doc/tutorial/create-module</a></p><h3 id="Start-a-module-that-others-can-use"><a href="#Start-a-module-that-others-can-use" class="headerlink" title="Start a module that others can use"></a>Start a module that others can use</h3><ol><li><p>创建<code>greetings</code>目录</p></li><li><p>运行<code>go mod init</code>命令</p> <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go mod init example.com/greetings<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>编辑<code>greetings.go</code></p> <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> greetings<span class="token keyword">import</span> <span class="token string">"fmt"</span><span class="token comment">// Hello returns a greeting for the named person.</span><span class="token keyword">func</span> <span class="token function">Hello</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// Return a greeting that embeds the name in a message.</span>    message <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"Hi, %v. Welcome!"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>    <span class="token keyword">return</span> message<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Go </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo+Github博客搭建</title>
+      <link href="/2021/11/22/hexo-github-bo-ke-da-jian/"/>
+      <url>/2021/11/22/hexo-github-bo-ke-da-jian/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Ubuntu安装Node-js"><a href="#Ubuntu安装Node-js" class="headerlink" title="Ubuntu安装Node.js"></a>Ubuntu安装Node.js</h2><p>参见<a href="https://github.com/nodesource/distributions/blob/master/README.md">https://github.com/nodesource/distributions/blob/master/README.md</a>，使用如下命令安装Node.js：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -fsSL https://deb.nodesource.com/setup_16.x <span class="token operator">|</span> <span class="token function">sudo</span> -E <span class="token function">bash</span> -<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y nodejs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装完成后，输入<code>node -v</code>和<code>npm -v</code>，如果出现版本号，即代表安装成功。</p><p>同时，为npm添加国内镜像源：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="新建Github仓库"><a href="#新建Github仓库" class="headerlink" title="新建Github仓库"></a>新建Github仓库</h2><p>仓库名必须设置为<code>$&#123;username&#125;.github.io</code>，其中<code>$&#123;username&#125;</code>为你的Github账户名。</p><p>之后点击<code>Settings-&gt;Pages</code>，<code>Source</code>选择<code>main</code>分支。</p><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>安装完后输入<code>hexo -v</code>验证是否安装成功。</p><h2 id="本地项目创建与配置"><a href="#本地项目创建与配置" class="headerlink" title="本地项目创建与配置"></a>本地项目创建与配置</h2><p>新建一个文件夹，如<code>myBlog</code>，进入该目录，输入<code>hexo init</code>初始化文件夹，接着输入<code>npm i hexo-deployer-git</code>安装npm相关依赖。</p><p>打开<code>_config.yml</code>，修改<code>deploy</code>项如下：</p><pre class="line-numbers language-none"><code class="language-none">deploy:  type: git  repository: git@github.com:$&#123;username&#125;&#x2F;$&#123;username&#125;.github.io.git  branch: main  message: &#39;hexo blog deploy&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="写文章、发布文章"><a href="#写文章、发布文章" class="headerlink" title="写文章、发布文章"></a>写文章、发布文章</h2><ul><li><code>hexo new post &quot;article title&quot;</code>，新建一篇文章</li><li><code>hexo g</code>生成静态网页</li><li><code>hexo s</code>可以本地预览效果</li><li><code>hexo d</code>上传到github上</li></ul><h2 id="备份与同步"><a href="#备份与同步" class="headerlink" title="备份与同步"></a>备份与同步</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> origin git@github.com:<span class="token variable">$&#123;username&#125;</span>/<span class="token variable">$&#123;username&#125;</span>.github.io.git<span class="token function">git</span> push -u origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://godweiyang.com/2018/04/13/hexo-blog/">https://godweiyang.com/2018/04/13/hexo-blog/</a></li><li><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Rem</title>
+      <link href="/2021/11/10/rem/"/>
+      <url>/2021/11/10/rem/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/ADCa97/images/img/rem.png" alt="Rem"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Img </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WSGI</title>
+      <link href="/2021/11/10/wsgi/"/>
+      <url>/2021/11/10/wsgi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="为什么需要WSGI？"><a href="#为什么需要WSGI？" class="headerlink" title="为什么需要WSGI？"></a>为什么需要WSGI？</h2><hr><p>首先，我们明确一下Web应用处理请求的具体流程：</p><ol><li>浏览器发送一个HTTP请求</li><li>请求转发至对应的Web服务器</li><li>Web服务器将请求转交给Web应用程序，Web应用程序处理请求</li><li>Web应用程序将请求结果返回给Web服务器，由Web服务器返回用户响应结果</li><li>浏览器收到响应，向用户展示</li></ol><p>其中，第3、4步Web服务器需要和Web应用程序进行通信，为了避免鸡同鸭讲的情况，规范它们之间的通信行为，WSGI应运而生。</p><h2 id="Web-Server-Gateway-Interface"><a href="#Web-Server-Gateway-Interface" class="headerlink" title="Web Server Gateway Interface"></a>Web Server Gateway Interface</h2><hr><p>WSGI全称Python Web Server Gateway Interface，指定了Web服务器和Python Web应用程序或Web框架之间的标准接口，以提高Web应用程序在一系列Web服务器间的移植性。具体可参考<a href="https://www.python.org/dev/peps/pep-0333/">官方文档PEP 333</a>。</p><p>具体的，WSGI应用程序接口是作为一个可调用对象实现的，比如一个函数、方法、类或者一个具有<code>__call__</code>方法的实例。该对象应该接受两个参数，返回一个可迭代对象：</p><ol><li><strong>environ</strong>: 带有环境变量的字典</li><li><strong>start_response</strong>: 一个回调函数，用于向服务器发送HTTP状态和HTTP报头。该函数只能调用一次，其接收两个参数，一个是HTTP响应码，一个是一组<code>list</code>表示的HTTP Header，每个Header用一个包含两个<code>str</code>的<code>tuple</code>表示。</li></ol><h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><hr><p>接下来，我们编写<code>hello.py</code>，一个符合WSGI标准的HTTP处理函数：</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># hello.py</span><span class="token keyword">def</span> <span class="token function">application</span><span class="token punctuation">(</span>environ<span class="token punctuation">,</span> start_response<span class="token punctuation">)</span><span class="token punctuation">:</span>    status <span class="token operator">=</span> <span class="token string">"200 OK"</span>    response_headers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span> <span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>    start_response<span class="token punctuation">(</span>status<span class="token punctuation">,</span> response_headers<span class="token punctuation">)</span>    path <span class="token operator">=</span> environ<span class="token punctuation">[</span><span class="token string">"PATH_INFO"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token string">"hello"</span>    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">b"&lt;h1> Hello %s &lt;/h1>"</span> <span class="token operator">%</span> path<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>然后，再编写一个<code>server.py</code>，负责启动WSGI服务器，加载<code>application()</code>函数：</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># server.py</span><span class="token keyword">from</span> wsgiref<span class="token punctuation">.</span>simple_server <span class="token keyword">import</span> make_server<span class="token keyword">from</span> hello <span class="token keyword">import</span> application<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    server <span class="token operator">=</span> make_server<span class="token punctuation">(</span><span class="token string">'localhost'</span><span class="token punctuation">,</span> <span class="token number">8001</span><span class="token punctuation">,</span> application<span class="token punctuation">)</span>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Serving HTTP on port 8001...'</span><span class="token punctuation">)</span>    server<span class="token punctuation">.</span>serve_forever<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>之后运行<code>python server.py</code>来启动WSGI服务器，打开浏览器，输入<code>http://localhost:8001/</code>就可以看到结果了。</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/95942024">https://zhuanlan.zhihu.com/p/95942024</a></li><li><a href="https://rahmonov.me/posts/what-the-hell-is-wsgi-anyway-and-what-do-you-eat-it-with/">https://rahmonov.me/posts/what-the-hell-is-wsgi-anyway-and-what-do-you-eat-it-with/</a></li><li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017805733037760">https://www.liaoxuefeng.com/wiki/1016959663602400/1017805733037760</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
