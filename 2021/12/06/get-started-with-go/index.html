@@ -7,7 +7,7 @@
     <meta name="keywords" content="LearnGo, ADCa&#39;s Blog">
     <meta name="description" content="安装Gohttps://golang.google.cn/doc/install
 Get started with Gohttps://golang.google.cn/doc/tutorial/getting-started
-Create">
+Write ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -359,7 +359,7 @@ Create">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    97
+                    132
                 </div>
                 
 
@@ -386,6 +386,19 @@ Create">
             <div id="articleContent">
                 <h2 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h2><p><a target="_blank" rel="noopener" href="https://golang.google.cn/doc/install">https://golang.google.cn/doc/install</a></p>
 <h2 id="Get-started-with-Go"><a href="#Get-started-with-Go" class="headerlink" title="Get started with Go"></a>Get started with Go</h2><p><a target="_blank" rel="noopener" href="https://golang.google.cn/doc/tutorial/getting-started">https://golang.google.cn/doc/tutorial/getting-started</a></p>
+<p><strong>Write some code</strong></p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>Call code in an external package</strong></p>
+<p>注意设置代理</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go <span class="token function">env</span> -w <span class="token assign-left variable">GOPROXY</span><span class="token operator">=</span>https://goproxy.cn,direct<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="Create-a-Go-module"><a href="#Create-a-Go-module" class="headerlink" title="Create a Go module"></a>Create a Go module</h2><p><a target="_blank" rel="noopener" href="https://golang.google.cn/doc/tutorial/create-module">https://golang.google.cn/doc/tutorial/create-module</a></p>
 <h3 id="Start-a-module-that-others-can-use"><a href="#Start-a-module-that-others-can-use" class="headerlink" title="Start a module that others can use"></a>Start a module that others can use</h3><ol>
 <li><p>创建<code>greetings</code>目录</p>
