@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="深度学习推荐系统[ch02], ADCa&#39;s Blog">
-    <meta name="description" content="深度学习推荐系统[ch02] | ADCa&#39;s Blog">
+    <meta name="description" content="前深度学习时代——推荐系统的进化之路传统推荐模型是深度学习推荐模型的基础。
+协同过滤、逻辑回归、因子分解机等传统推荐模型仍然凭借其可解释性强、硬件环境要求低、易于快速训练和部署等不可替代的优势，拥有大量适用的应用场景。
+传统推荐模型的演化关">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -357,7 +359,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    575
                 </div>
                 
 
@@ -382,7 +384,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="前深度学习时代——推荐系统的进化之路"><a href="#前深度学习时代——推荐系统的进化之路" class="headerlink" title="前深度学习时代——推荐系统的进化之路"></a>前深度学习时代——推荐系统的进化之路</h1><p>传统推荐模型是深度学习推荐模型的基础。</p>
+<p>协同过滤、逻辑回归、因子分解机等传统推荐模型仍然凭借其可解释性强、硬件环境要求低、易于快速训练和部署等不可替代的优势，拥有大量适用的应用场景。</p>
+<h2 id="传统推荐模型的演化关系图"><a href="#传统推荐模型的演化关系图" class="headerlink" title="传统推荐模型的演化关系图"></a>传统推荐模型的演化关系图</h2><p><img src="https://cdn.jsdelivr.net/gh/ADCa97/images/img/%E4%BC%A0%E7%BB%9F%E6%8E%A8%E8%8D%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%BC%94%E5%8C%96%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt="传统推荐模型的演化关系图"></p>
+<p>传统推荐模型的发展脉络主要由以下几部分组成：</p>
+<ol>
+<li><p>协同过滤算法族。</p>
+<p> 从物品相似度和用户相似度角度出发，协同过滤衍生出物品协同过滤（ItemCF）和用户协同过滤（UserCF）两种算法。为了使协同过滤能够更好地处理<strong>稀疏共现矩阵问题、增强模型的泛化能力</strong>，从协同过滤衍生出矩阵分解模型（MF），并发展出矩阵分解的各分支模型。</p>
+</li>
+<li><p>逻辑回归模型族。</p>
+<p> 与协同过滤仅利用用户和物品之间的显式或隐式反馈信息相比，逻辑回归能够<strong>利用和融合更多用户、物品及上下文特征</strong>。从LR模型衍生出的模型包括增强了非线性能力的大规模分片线性模型（LS-PLM），由逻辑回归发展出来的FM模型，以及与多种不同模型配合使用后的组合模型，等等。</p>
+</li>
+<li><p>因子分解机模型族。</p>
+<p> 因子分解机在传统逻辑回归的基础上，加入了二阶部分，使模型具备了<strong>进行特征组合</strong>的能力。更进一步，在因子分解机基础上发展出来的域感知因子分解机（FFM）则通过加入特征域的概念，进一步加强了因子分解机特征交叉的能力。</p>
+</li>
+<li><p>组合模型。</p>
+<p> 为了<strong>融合多个模型</strong>的优点，将不同模型组合使用是构建推荐模型常用的方法。GBDT+LR（梯度提升决策树+逻辑回归）组合模型是在业界影响力较大的组合方式。此外，组合模型中体现出的<strong>特征工程模型化</strong>的思想，也成了深度学习推荐模型的引子和核心思想之一。</p>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
