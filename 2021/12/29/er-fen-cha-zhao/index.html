@@ -4,14 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="WSGI, ADCa&#39;s Blog">
-    <meta name="description" content="为什么需要WSGI？
-首先，我们明确一下Web应用处理请求的具体流程：
+    <meta name="keywords" content="二分查找, ADCa&#39;s Blog">
+    <meta name="description" content="模板 #1
+初始条件：left = 0, right = length - 1
+终止：left &amp;gt; right
+向左查找：right = mid - 1
+向右查找：left = mid + 1
 
-浏览器发送一个HTTP请求
-请求转发至对应的Web服务器
-Web服务器将请求转交给Web应用程序，Web应用程序处理请求
-Web应用程序将请求结果返回给Web服务器，">
+int binarySearch(ve">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +23,7 @@ Web应用程序将请求结果返回给Web服务器，">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>WSGI | ADCa&#39;s Blog</title>
+    <title>二分查找 | ADCa&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -208,12 +208,12 @@ Web应用程序将请求结果返回给Web服务器，">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WSGI</h1>
+                    <h1 class="description center-align post-title">二分查找</h1>
                 </div>
             </div>
         </div>
@@ -329,8 +329,12 @@ Web应用程序将请求结果返回给Web服务器，">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web/">
-                                <span class="chip bg-color">Web</span>
+                            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                <span class="chip bg-color">二分查找</span>
+                            </a>
+                        
+                            <a href="/tags/LeetCode/">
+                                <span class="chip bg-color">LeetCode</span>
                             </a>
                         
                     </div>
@@ -341,8 +345,8 @@ Web应用程序将请求结果返回给Web服务器，">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web/" class="post-category">
-                                Web
+                            <a href="/categories/Algorithms/" class="post-category">
+                                Algorithms
                             </a>
                         
                     </div>
@@ -354,7 +358,7 @@ Web应用程序将请求结果返回给Web服务器，">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-10
+                    2021-12-30
                 </div>
                 
 
@@ -363,7 +367,7 @@ Web应用程序将请求结果返回给Web服务器，">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    535
+                    402
                 </div>
                 
 
@@ -388,52 +392,80 @@ Web应用程序将请求结果返回给Web服务器，">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="为什么需要WSGI？"><a href="#为什么需要WSGI？" class="headerlink" title="为什么需要WSGI？"></a>为什么需要WSGI？</h2><hr>
-<p>首先，我们明确一下Web应用处理请求的具体流程：</p>
-<ol>
-<li>浏览器发送一个HTTP请求</li>
-<li>请求转发至对应的Web服务器</li>
-<li>Web服务器将请求转交给Web应用程序，Web应用程序处理请求</li>
-<li>Web应用程序将请求结果返回给Web服务器，由Web服务器返回用户响应结果</li>
-<li>浏览器收到响应，向用户展示</li>
-</ol>
-<p>其中，第3、4步Web服务器需要和Web应用程序进行通信，为了避免鸡同鸭讲的情况，规范它们之间的通信行为，WSGI应运而生。</p>
-<h2 id="Web-Server-Gateway-Interface"><a href="#Web-Server-Gateway-Interface" class="headerlink" title="Web Server Gateway Interface"></a>Web Server Gateway Interface</h2><hr>
-<p>WSGI全称Python Web Server Gateway Interface，指定了Web服务器和Python Web应用程序或Web框架之间的标准接口，以提高Web应用程序在一系列Web服务器间的移植性。具体可参考<a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0333/">官方文档PEP 333</a>。</p>
-<p>具体的，WSGI应用程序接口是作为一个可调用对象实现的，比如一个函数、方法、类或者一个具有<code>__call__</code>方法的实例。该对象应该接受两个参数，返回一个可迭代对象：</p>
-<ol>
-<li><strong>environ</strong>: 带有环境变量的字典</li>
-<li><strong>start_response</strong>: 一个回调函数，用于向服务器发送HTTP状态和HTTP报头。该函数只能调用一次，其接收两个参数，一个是HTTP响应码，一个是一组<code>list</code>表示的HTTP Header，每个Header用一个包含两个<code>str</code>的<code>tuple</code>表示。</li>
-</ol>
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><hr>
-<p>接下来，我们编写<code>hello.py</code>，一个符合WSGI标准的HTTP处理函数：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># hello.py</span>
-<span class="token keyword">def</span> <span class="token function">application</span><span class="token punctuation">(</span>environ<span class="token punctuation">,</span> start_response<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    status <span class="token operator">=</span> <span class="token string">"200 OK"</span>
-    response_headers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span> <span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    start_response<span class="token punctuation">(</span>status<span class="token punctuation">,</span> response_headers<span class="token punctuation">)</span>
-    path <span class="token operator">=</span> environ<span class="token punctuation">[</span><span class="token string">"PATH_INFO"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token string">"hello"</span>
-    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">b"&lt;h1> Hello %s &lt;/h1>"</span> <span class="token operator">%</span> path<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>然后，再编写一个<code>server.py</code>，负责启动WSGI服务器，加载<code>application()</code>函数：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># server.py</span>
-<span class="token keyword">from</span> wsgiref<span class="token punctuation">.</span>simple_server <span class="token keyword">import</span> make_server
-<span class="token keyword">from</span> hello <span class="token keyword">import</span> application
-
-
-<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    server <span class="token operator">=</span> make_server<span class="token punctuation">(</span><span class="token string">'localhost'</span><span class="token punctuation">,</span> <span class="token number">8001</span><span class="token punctuation">,</span> application<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Serving HTTP on port 8001...'</span><span class="token punctuation">)</span>
-    server<span class="token punctuation">.</span>serve_forever<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>之后运行<code>python server.py</code>来启动WSGI服务器，打开浏览器，输入<code>http://localhost:8001/</code>就可以看到结果了。</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95942024">https://zhuanlan.zhihu.com/p/95942024</a></li>
-<li><a target="_blank" rel="noopener" href="https://rahmonov.me/posts/what-the-hell-is-wsgi-anyway-and-what-do-you-eat-it-with/">https://rahmonov.me/posts/what-the-hell-is-wsgi-anyway-and-what-do-you-eat-it-with/</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017805733037760">https://www.liaoxuefeng.com/wiki/1016959663602400/1017805733037760</a></li>
+                <h2 id="模板-1"><a href="#模板-1" class="headerlink" title="模板 #1"></a>模板 #1</h2><ul>
+<li>初始条件：left = 0, right = length - 1</li>
+<li>终止：left &gt; right</li>
+<li>向左查找：right = mid - 1</li>
+<li>向右查找：left = mid + 1</li>
 </ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int binarySearch(vector&lt;int&gt;&amp; nums, int target) &#123;
+    if (nums.size() &#x3D;&#x3D; 0)
+        return -1;
+    int left &#x3D; 0, right &#x3D; nums.size() - 1;
+    while (left &lt;&#x3D; right) &#123;
+        int mid &#x3D; left + (right - left) &#x2F; 2;
+        &#x2F;&#x2F; 不需要后处理，每一步都在检查是否找到了元素，如果到达末尾，则知道未找到该元素
+        if (nums[mid] &#x3D;&#x3D; target)
+            return mid;
+        else if (nums[mid] &gt; target)
+            right &#x3D; mid - 1;
+        else
+            left &#x3D; mid + 1;
+    &#125;
+    &#x2F;&#x2F; End Condition: left &gt; right
+    return -1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="模板-2"><a href="#模板-2" class="headerlink" title="模板 #2"></a>模板 #2</h2><ul>
+<li>初始条件：left = 0, right = length</li>
+<li>终止：left == right</li>
+<li>向左查找：right = mid</li>
+<li>向右查找：left = mid + 1</li>
+</ul>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int binarSearch(vector&lt;int&gt;&amp; nums, int target) &#123;
+    if (nums.size() &#x3D;&#x3D; 0)
+        return -1;
+    int left &#x3D; 0, right &#x3D; nums.size();
+
+    while (left &lt; right) &#123;
+        int mid &#x3D; left + (right - left) &#x2F; 2;
+        if (nums[mid] &#x3D;&#x3D; target)
+            return mid;
+        else if (nums[mid] &lt; target) &#123;
+            left &#x3D; mid + 1;
+        &#125; else &#123;
+            right &#x3D; mid;
+        &#125;
+    &#125;
+    &#x2F;&#x2F; 需要进行后处理。当你剩下1个元素时，循环结束。需要评估剩余元素是否符合条件
+    if (left !&#x3D; nums.size() &amp;&amp; nums[left] &#x3D;&#x3D; target)
+        return left;
+    return -1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="模板-3"><a href="#模板-3" class="headerlink" title="模板 #3"></a>模板 #3</h2><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">int binarySearch(vector&lt;int&gt;&amp; nums, int target)&#123;
+    if (nums.size() &#x3D;&#x3D; 0)
+        return -1;
+
+    int left &#x3D; 0, right &#x3D; nums.size() - 1;
+    while (left + 1 &lt; right)&#123;
+        &#x2F;&#x2F; Prevent (left + right) overflow
+        int mid &#x3D; left + (right - left) &#x2F; 2;
+        if (nums[mid] &#x3D;&#x3D; target) &#123;
+            return mid;
+        &#125; else if (nums[mid] &lt; target) &#123;
+            left &#x3D; mid;
+        &#125; else &#123;
+            right &#x3D; mid;
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F; Post-processing:
+    &#x2F;&#x2F; End Condition: left + 1 &#x3D;&#x3D; right
+    if(nums[left] &#x3D;&#x3D; target) return left;
+    if(nums[right] &#x3D;&#x3D; target) return right;
+    return -1;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -460,7 +492,7 @@ Web应用程序将请求结果返回给Web服务器，">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.adca.top/2021/11/10/wsgi/">https://www.adca.top/2021/11/10/wsgi/</a>
+                    <a href="https://www.adca.top/2021/12/29/er-fen-cha-zhao/">https://www.adca.top/2021/12/29/er-fen-cha-zhao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -498,8 +530,12 @@ Web应用程序将请求结果返回给Web服务器，">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web/">
-                                    <span class="chip bg-color">Web</span>
+                                <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                                    <span class="chip bg-color">二分查找</span>
+                                </a>
+                            
+                                <a href="/tags/LeetCode/">
+                                    <span class="chip bg-color">LeetCode</span>
                                 </a>
                             
                         </div>
@@ -542,57 +578,18 @@ Web应用程序将请求结果返回给Web服务器，">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2021/11/10/rem/">
-                    <div class="card-image">
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/ADCa97/images/img/rem.png" class="responsive-img" alt="Rem">
-                        
-                        <span class="card-title">Rem</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Img/" class="post-category">
-                                    Img
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/11/10/wsgi/">
+                <a href="/2021/12/29/er-fen-cha-zhao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="WSGI">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="二分查找">
                         
-                        <span class="card-title">WSGI</span>
+                        <span class="card-title">二分查找</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -603,14 +600,14 @@ Web应用程序将请求结果返回给Web服务器，">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web/" class="post-category">
-                                    Web
+                            <a href="/categories/Algorithms/" class="post-category">
+                                    Algorithms
                                 </a>
                             
                             
@@ -621,8 +618,61 @@ Web应用程序将请求结果返回给Web服务器，">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web/">
-                        <span class="chip bg-color">Web</span>
+                    <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">二分查找</span>
+                    </a>
+                    
+                    <a href="/tags/LeetCode/">
+                        <span class="chip bg-color">LeetCode</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/27/shen-du-xue-xi-tui-jian-xi-tong-ch01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="深度学习推荐系统[ch01]">
+                        
+                        <span class="card-title">深度学习推荐系统[ch01]</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/RS/" class="post-category">
+                                    RS
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">深度学习推荐系统</span>
                     </a>
                     
                 </div>
