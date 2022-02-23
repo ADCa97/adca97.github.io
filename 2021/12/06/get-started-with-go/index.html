@@ -359,7 +359,7 @@ Write ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    132
+                    278
                 </div>
                 
 
@@ -399,8 +399,22 @@ Write ">
 <p>注意设置代理</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go <span class="token function">env</span> -w <span class="token assign-left variable">GOPROXY</span><span class="token operator">=</span>https://goproxy.cn,direct<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">import</span> <span class="token string">"rsc.io/quote"</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>quote<span class="token punctuation">.</span><span class="token function">Go</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Add new module requirements and sums.</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go mod tidy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="Create-a-Go-module"><a href="#Create-a-Go-module" class="headerlink" title="Create a Go module"></a>Create a Go module</h2><p><a target="_blank" rel="noopener" href="https://golang.google.cn/doc/tutorial/create-module">https://golang.google.cn/doc/tutorial/create-module</a></p>
-<h3 id="Start-a-module-that-others-can-use"><a href="#Start-a-module-that-others-can-use" class="headerlink" title="Start a module that others can use"></a>Start a module that others can use</h3><ol>
+<p><em><strong>Start a module that others can use</strong></em></p>
+<ol>
 <li><p>创建<code>greetings</code>目录</p>
 </li>
 <li><p>运行<code>go mod init</code>命令</p>
@@ -415,9 +429,30 @@ Write ">
     <span class="token comment">// Return a greeting that embeds the name in a message.</span>
     message <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"Hi, %v. Welcome!"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
     <span class="token keyword">return</span> message
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
+<h2 id="Call-your-code-from-another-module"><a href="#Call-your-code-from-another-module" class="headerlink" title="Call your code from another module"></a>Call your code from another module</h2><ol>
+<li>Write code to call the Hello function, then print the function’s return value. <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+
+    <span class="token string">"example.com/greetings"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Get a greeting message and print it.</span>
+    message <span class="token operator">:=</span> greetings<span class="token punctuation">.</span><span class="token function">Hello</span><span class="token punctuation">(</span><span class="token string">"Gladys"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>Edit the example.com/hello module to use your local example.com/greetings module. <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go mod edit -replace example.com/greetings<span class="token operator">=</span><span class="token punctuation">..</span>/greetings<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h2 id="Return-and-handle-an-error"><a href="#Return-and-handle-an-error" class="headerlink" title="Return and handle an error"></a>Return and handle an error</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/handle-errors">https://go.dev/doc/tutorial/handle-errors</a></p>
+<h2 id="Return-a-random-greeting"><a href="#Return-a-random-greeting" class="headerlink" title="Return a random greeting"></a>Return a random greeting</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/random-greeting">https://go.dev/doc/tutorial/random-greeting</a></p>
+<h2 id="Return-greetings-for-multiple-people"><a href="#Return-greetings-for-multiple-people" class="headerlink" title="Return greetings for multiple people"></a>Return greetings for multiple people</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/greetings-multiple-people">https://go.dev/doc/tutorial/greetings-multiple-people</a></p>
+<h2 id="Add-a-test"><a href="#Add-a-test" class="headerlink" title="Add a test"></a>Add a test</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/add-a-test">https://go.dev/doc/tutorial/add-a-test</a></p>
+<h2 id="Compile-and-install-the-application"><a href="#Compile-and-install-the-application" class="headerlink" title="Compile and install the application"></a>Compile and install the application</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/compile-install">https://go.dev/doc/tutorial/compile-install</a>
+    </p>
 
                 
             </div>
